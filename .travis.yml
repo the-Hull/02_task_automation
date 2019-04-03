@@ -28,6 +28,10 @@ matrix:
 r_build_args: " "
 r_check_args: "--as-cran"
 warnings_are_errors: false
+install:
+  - Rscript install_ackages.R
+script:
+  - Rscript generate_parameter_reports.R
 branches:
   only:
   - master
