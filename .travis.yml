@@ -24,7 +24,7 @@ matrix:
     before_install:
     - export DISPLAY=:99.0
     - sh -e /etc/init.d/xvfb start
-    after_success:
+    after_success: 
     r_packages:
     - devtools
 r_build_args: " "
@@ -40,4 +40,4 @@ branches:
   - master
 env:
   global:
-  - secure: 1P2z6Bb8z9EM0zfOT6sInxhWnLJsXWXmM95VMrXb5DbqPKDkpZchGcNh+r4dcl+kknQFcB8DYkKWgixcxbwCuoJuGXEBMW+5EIpYOJlRMA4IDH+0WwJmaFwQKk5ip98JVbrjYaWbez4Z8IJZeZcxhNJdHiD4FkR+CK2B5Wi1lkjtr1IlYWOA0dZW5qKBp2CZ2AFJQn+NrY8h14xLs0W8+fyxC8Z7oiO0gv5oUxLrDjGbWhF6gW+l0Mh2R/B44HevxDEGRj/WRps5xzS8dOwdttee8CBBhIVXIDNM9twK/ErpwGs71jb7DjiUKZaiY0bMaaivMIRKr0dg7p/pVxBG+SdqreASWx+8WK7R1VYTvSATdWtPo6PqocsdPlhb/hP95hdznM3oQLxC6xTTp8x2YpY1TDZMxPyUF8T4ZH/0q3MZpJprhlmOSLJjno5wGYcZFpvi+9+EVJapECeCWk+Be3nNwjDhIexEhE0elcIlkXM2KnoiBBImG0z4afHYlCkz5jhe0adn8uZe9vU33T2gVrzRyYrGOfKuk3TSQr2T110GkfX9ULSk4P3L2oU7JJ6EeX66ry2wOsOicjknDs/DI2D72+8VPMrhkm/AAi+WNwxJ0Tmyx8tZUjoyNmuAuvM3jdWG19LL8RUnH4hWAuVAWrPaYrYLfzfSRJaSOiH41D8=
+    secure: aH64smG6aBtPH9Yte6J1jHKv8Dviqh9uTgSyDGXPMEKTw6vslboWaZxg46VPxR4E8ZuXRWzJA93/FUmfSOIL+RyZ//qegPNNQyTnYMFR+rk+9f42PVuN1lQ/eOpKZlFgCryBp1Yw3d5zB/LmEU2Cs6KbRVG2oxAJ9/0m7DY8OgfEfe7dTBszvp0RnRCSOJn+UcknhXLUfex94/uijQDeChEejkBNnDmU3CEKmg2K4OD2K64WGInlYWS/mgm0LQu9aYhrY8hbOM8KgjN3r2HxiWn/cU9eD9SUJj3ZZAjDia51dD7fQ+nAbdnfcK1BtHTqdtmssIbdeXrFS0OruWKT98nyGi7kjdLaKAuMxmiCAzwQaoGzSOeV/q0EUcxxmd0lInfNANpuT69muzKFBwf+HLb4i6z/rfJCPS5fuk2lW6VyDjCQUjWIEPfTh/pUKf+hw0JBoMQ/1Ho6Lbp5kffGlCVWFFj1RK6kPb1GrrcajKxGrfgKKFe5NtxfQgZDJ96/h6J9gRSNf9QCNZr1i+cI8sLXfHNmNyu0T7rDWEJqK2PqQcd+/XXNmlJn2/cJzgUUg3mx6G1a9lFbte/eLG5ZfJNTrROx3gCS4Xrliad2FF5jeL3ri5KCni5i/r5Urt7CkCxzYzYwYyXMBM8nQrntVdtRD2rItH7FF+xP1yDXVys=
