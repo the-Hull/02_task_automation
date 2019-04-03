@@ -27,7 +27,7 @@ git2r::checkout(repo, branch = "master")
 git2r::add(repo, "*")
 
 git2r::push(repo,
-            name = "deploy",
+            name = "taskauto",
             refspec = "refs/heads/master",
             credentials = cred)
 
