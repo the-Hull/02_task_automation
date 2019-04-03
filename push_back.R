@@ -2,14 +2,14 @@
 
 # set up repo and add remote
 repo <- git2r::repository(".")
-repo
-# repo_url <- "https://github.com/the-hull/02_task_automation.git"
+# repo
+repo_url <- "https://github.com/the-Hull/02_task_automation.git"
 #
-# git2r::remote_add(repo, name = "dummy", url = repo_url)
+git2r::remote_add(repo, name = "taskauto", url = repo_url)
 #
 #
 #
-# git2r::config(repo,
+ # git2r::config(repo,
 #               user.email = "aghu@aghu.com",
 #               user.name = "Hurliver")
 #
