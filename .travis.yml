@@ -24,7 +24,7 @@ matrix:
     before_install:
     - export DISPLAY=:99.0
     - sh -e /etc/init.d/xvfb start
-    after_success: 
+    after_success:
     r_packages:
     - devtools
 r_build_args: " "
@@ -38,6 +38,3 @@ script:
 branches:
   only:
   - master
-env:
-  global:
-    secure: aH64smG6aBtPH9Yte6J1jHKv8Dviqh9uTgSyDGXPMEKTw6vslboWaZxg46VPxR4E8ZuXRWzJA93/FUmfSOIL+RyZ//qegPNNQyTnYMFR+rk+9f42PVuN1lQ/eOpKZlFgCryBp1Yw3d5zB/LmEU2Cs6KbRVG2oxAJ9/0m7DY8OgfEfe7dTBszvp0RnRCSOJn+UcknhXLUfex94/uijQDeChEejkBNnDmU3CEKmg2K4OD2K64WGInlYWS/mgm0LQu9aYhrY8hbOM8KgjN3r2HxiWn/cU9eD9SUJj3ZZAjDia51dD7fQ+nAbdnfcK1BtHTqdtmssIbdeXrFS0OruWKT98nyGi7kjdLaKAuMxmiCAzwQaoGzSOeV/q0EUcxxmd0lInfNANpuT69muzKFBwf+HLb4i6z/rfJCPS5fuk2lW6VyDjCQUjWIEPfTh/pUKf+hw0JBoMQ/1Ho6Lbp5kffGlCVWFFj1RK6kPb1GrrcajKxGrfgKKFe5NtxfQgZDJ96/h6J9gRSNf9QCNZr1i+cI8sLXfHNmNyu0T7rDWEJqK2PqQcd+/XXNmlJn2/cJzgUUg3mx6G1a9lFbte/eLG5ZfJNTrROx3gCS4Xrliad2FF5jeL3ri5KCni5i/r5Urt7CkCxzYzYwYyXMBM8nQrntVdtRD2rItH7FF+xP1yDXVys=
