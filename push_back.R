@@ -16,7 +16,9 @@ git2r::config(repo,
 #
 # travis_build <- Sys.getenv("TRAVIS_BUILD_NUMBER")
 commit_message <- paste("Update data and trigger archive: Travis Build")
-cred <- Sys.getenv("GH_TOKEN")
+# cred <- Sys.getenv("GH_TOKEN")
+cred <- git2r::cred_token(Sys.getenv("GH_TOKEN"))
+
 #
 #
 #
