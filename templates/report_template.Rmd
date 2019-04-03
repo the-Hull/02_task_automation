@@ -1,0 +1,174 @@
+---
+author: "rHydro Demonstrator"
+date: '`r paste("generated at:", Sys.Date())`'
+output: html_document
+params: 
+  location: "Mt St Helens"
+  year:
+    value: 2000
+title: "`r paste('Overview for:', params$location)`"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+```
+
+# Overview
+
+
+This report is for `r paste("This report is for", params$location)` and was generated for `r paste(params$year)`.
+<!-- "`r paste("Site Overview:", params$location)`" -->
+
+# Area overview
+
+```{r map-fig, eval = TRUE}
+
+# specify area of interest
+aoi <- AOI::getAOI(clip = list(params$location,15 ,15), km = TRUE)
+    
+
+# pull and plot map
+map <- OpenStreetMap::openmap(upperLeft = c(aoi@bbox[[4]], aoi@bbox[[1]]),
+                       lowerRight = c(aoi@bbox[[2]], aoi@bbox[[3]]),
+                       type = "osm",
+                       minNumTiles = 12)
+
+print(OpenStreetMap::autoplot.OpenStreetMap(map))
+
+```
+
+# Climate data
+
+
+
+```{r precip-fig, eval = TRUE}
+
+
+daymet_data <- daymetr::download_daymet(lat = aoi@polygons[[1]]@labpt[2],
+                                   lon = aoi@polygons[[1]]@labpt[1],
+                                   start = params$year,
+                                   end = params$year)
+
+
+daymet_data$data <- dplyr::mutate(daymet_data$data,
+                             tmean = (tmax..deg.c. + tmin..deg.c.)/2,
+                             date = as.Date(paste(year, yday, sep = "-"), "%Y-%j"))
+
+library(ggplot2)
+
+
+ggplot(daymet_data$data,
+       aes(x = date,
+     y = prcp..mm.day.))  +
+    
+    geom_col(position = "dodge",
+             color = "darkblue") +
+    
+    labs(x = "Date",
+         y = "P (mm/day)",
+         title = paste0(params$location,": ", params$year, " - Precipitation")) +
+    theme_bw()
+
+
+
+ggplot(daymet_data$data,
+       aes(x = date,
+     y = tmean))  +
+    
+    geom_line(color = "firebrick1") +
+    
+    labs(x = "Date",
+         y = "Temperature (deg C)",
+         title = paste0(params$location,": ", params$year, " - Temperature")) +
+    theme_bw()
+
+
+```
+
+Annual total P for `r params$year` was: `r sum(daymet_data$data$prcp..mm.day., na.rm = TRUE)` mm.  
+Annual mean T for `r params$year` was: `r mean(daymet_data$data$tmean, na.rm = TRUE)` degC.
+
+
+
+
+
+```{r 3d-fig, message = FALSE, echo = FALSE, warning = FALSE}
+
+library(rayshader)
+
+# get annual precip data and load as raster
+# save to directory (create if not exits) with clean names based on location
+
+location_dir <- stringr::str_replace_all(params$location, pattern = "[.]", "-")
+location_dir <- stringr::str_replace_all(location_dir, pattern = "[ ]", "_")
+
+# set up dir
+path_raster_data <- paste0("../data/", location_dir, "/", params$year)
+
+
+if(!dir.exists(path_raster_data)) {
+    dir.create(path_raster_data, 
+               recursive = TRUE)
+}
+
+# download data
+daymetr::download_daymet_ncss(location = c(aoi@bbox[[4]], #<<
+                                           aoi@bbox[[1]],
+                                           aoi@bbox[[2]],
+                                           aoi@bbox[[3]]), # top left to bottom right
+                              start = params$year,
+                              end = params$year,
+                              param = "prcp",
+                              frequency = "annual",
+                              path = path_raster_data,
+                              silent = TRUE)
+
+
+# Projected CS
+proj4.Lambert <- "+proj=lcc +lat_1=25 +lat_2=60 +lat_0=42.5 +lon_0=-100 +x_0=0 +y_0=0 +a=6378137 +b=6356752.314706705 +units=km +no_defs"
+# Geographic CS
+proj4.WGS <- "+init=epsg:4326"
+
+# load and project raster
+prcp_raster <- list.files(path_raster_data,
+                   pattern = "prcp",
+                   full.names = TRUE) %>%
+
+            raster::raster() %>% #<<
+            raster::`projection<-`(., proj4.Lambert) %>% #<<
+            raster::projectRaster(crs = proj4.WGS)
+
+
+
+
+# load custom function
+source("../R/create_overlay.R")
+
+invisible(capture.output(ned_aoi <- aoi %>% HydroData::findNED()))
+
+
+ned <- matrix(raster::extract(ned_aoi$NED,raster::extent(ned_aoi$NED),buffer=1000),
+             nrow=ncol(ned_aoi$NED),ncol=nrow(ned_aoi$NED))
+
+overlay <- create_overlay(prcp_raster, ned_aoi$NED)
+
+
+
+ned %>%
+    sphere_shade(texture = "imhof1") %>%
+    add_water(detect_water(ned), color="desert") %>%
+      add_overlay(overlay, alphacolor = NULL, alphalayer = 0.8) %>%
+    add_shadow(ray_shade(ned)) %>%
+    add_shadow(ambient_shade(ned)) %>%
+    plot_3d(heightmap = ned ,
+            zscale = 1,
+            # fov = 90,
+            lineantialias = TRUE,
+            theta = 15,
+            phi = 85,
+            zoom = 0.3)
+render_snapshot()
+rgl::rgl.close()
+
+```
+
