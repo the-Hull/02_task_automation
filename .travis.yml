@@ -5,7 +5,7 @@ warnings_are_errors: false
 git:
   depth: false
 install:
-  - Rscript install-packages.R
+  - Rscript install_packages.R
 
 script:
   - Rscript generate_parameter_reports.R
