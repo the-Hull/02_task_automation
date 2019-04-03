@@ -9,23 +9,22 @@ git2r::remote_add(repo, name = "taskauto", url = repo_url)
 #
 #
 #
- # git2r::config(repo,
-#               user.email = "aghu@aghu.com",
-#               user.name = "Hurliver")
-#
+git2r::config(repo,
+              user.email = "aghu@aghu.com",
+              user.name = "Hurliver")
+
 #
 # travis_build <- Sys.getenv("TRAVIS_BUILD_NUMBER")
-# commit_message <- paste("Update data and trigger archive: Travis Build",
-#                         travis_build)
-# cred <- Sys.getenv("GITHUB_TOKEN")
+commit_message <- paste("Update data and trigger archive: Travis Build")
+cred <- Sys.getenv("GH_TOKEN")
 #
 #
 #
 #
-# git2r::push(repo,
-#             name = "deploy",
-#             refspec = "refs/heads/master",
-#             credentials = cred)
+git2r::push(repo,
+            name = "deploy",
+            refspec = "refs/heads/master",
+            credentials = cred)
 
 # Mt St Helens
 # Grand Teton Mountain
