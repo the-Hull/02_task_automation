@@ -21,6 +21,9 @@ cred <- Sys.getenv("GH_TOKEN")
 #
 #
 #
+git2r::checkout(repo, branch = "master")
+git2r::add(repo, "*")
+
 git2r::push(repo,
             name = "deploy",
             refspec = "refs/heads/master",
