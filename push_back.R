@@ -15,7 +15,7 @@ git2r::config(repo,
 
 #
 # travis_build <- Sys.getenv("TRAVIS_BUILD_NUMBER")
-commit_message <- paste("Update data and trigger archive: Travis Build")
+commit_message <- paste("Update reports: Travis Build")
 # cred <- Sys.getenv("GH_TOKEN")
 cred <- git2r::cred_token("GH_TOKEN")
 
@@ -25,6 +25,9 @@ cred <- git2r::cred_token("GH_TOKEN")
 #
 git2r::checkout(repo, branch = "master")
 git2r::add(repo, "*")
+git2r::commit(repo, message = commit_message)
+
+
 
 git2r::push(repo,
             name = "taskauto",
