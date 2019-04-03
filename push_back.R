@@ -27,3 +27,6 @@ repo
 #             refspec = "refs/heads/master",
 #             credentials = cred)
 
+# Mt St Helens
+# Grand Teton Mountain
+# El Capitan Yosemite
