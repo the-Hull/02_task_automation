@@ -5,7 +5,7 @@ if ("pacman" %in% rownames(installed.packages()) == FALSE) install.packages("pac
 
 # Install analysis packages using pacman
 
-pacman::p_load(ncdf4, rgdal, rmarkdown, dplyr, daymetr, stringr, remotes, OpenStreetMap, raster)
+pacman::p_load(netcdf4, rgdal, rmarkdown, dplyr, daymetr, stringr, remotes, OpenStreetMap, raster)
 
 # install remotes
 if ("rayshader" %in% rownames(installed.packages()) == FALSE) {
@@ -20,3 +20,4 @@ if ("AOI" %in% rownames(installed.packages()) == FALSE) {
 if ("HydroData" %in% rownames(installed.packages()) == FALSE) {
     remotes::install_github("mikejohnson51/HydroData", upgrade = "always")
 }
+# - R CMD INSTALL --configure-args="--with-nc-config=/home/joe/bin/nc-config" ncdf4
