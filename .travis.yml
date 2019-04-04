@@ -27,7 +27,7 @@ matrix:
     after_success:
     r_packages:
     - devtools
-    - "./.push_results.sh"
+    - ./.push_results.sh
 r_build_args: " "
 r_check_args: "--as-cran"
 warnings_are_errors: false
