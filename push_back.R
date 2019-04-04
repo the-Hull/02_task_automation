@@ -24,11 +24,20 @@ cred <- git2r::cred_token("GH_TOKEN")
 #
 #
 #
+
+
+if (
+    Sys.getenv("TRAVIS_BRANCH") == 'master' &&
+    Sys.getenv("TRAVIS_PULL_REQUEST") == 'false')
+{
 git2r::checkout(repo, branch = "master")
 git2r::add(repo, "*")
 git2r::commit(repo, message = commit_message)
 
 
+
+
+# - "./.push_results.sh"
 
 git2r::push(repo,
             name = "taskauto",
@@ -40,3 +49,5 @@ git2r::push(repo,
 # El Capitan Yosemite
 # git remote add origin-rhydro https://${GH_TOKEN}@github.com/the-Hull/02_task_automation.git
 # git push origin-rhydro
+
+}
