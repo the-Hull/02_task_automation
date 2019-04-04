@@ -15,4 +15,4 @@ git add .
 
 
 git commit -m "deployed from travis"
-git push --force --quiet $FULL_REPO
+git push --force --quiet $FULL_REPO master
