@@ -24,9 +24,11 @@ matrix:
     before_install:
     - export DISPLAY=:99.0
     - sh -e /etc/init.d/xvfb start
-    after_success: 
+    - chmod 755 ./.push_results.sh
+    after_success:
     r_packages:
     - devtools
+    - ./.push_results.sh
 r_build_args: " "
 r_check_args: "--as-cran"
 warnings_are_errors: false
@@ -34,7 +36,6 @@ install:
 - Rscript install_packages.R
 script:
 - Rscript generate_parameter_reports.R
-- Rscript push_back.R
 branches:
   only:
   - master
