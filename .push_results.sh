@@ -11,8 +11,8 @@ commit_report_files() {
 }
 
 upload_files() {
-  git remote add origin-rhydro https://${GH_TOKEN}@github.com/the-Hull/02_task_automation.git > /dev/null 2>&1
-  git push --quiet origin-rhydro
+  git remote add origin-rhydro https://${GH_TOKEN}@github.com/the-Hull/02_task_automation.git
+  git push origin-rhydro
 }
 
 setup_git

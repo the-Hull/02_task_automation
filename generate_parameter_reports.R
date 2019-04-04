@@ -9,3 +9,6 @@ for(site in sites$sites){
 
     render_report(site, year = 2010)
 }
+
+
+git2r::libgit2_features()
