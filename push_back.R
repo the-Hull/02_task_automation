@@ -30,6 +30,8 @@ message("here")
 last_commit_author <- git2r::commits(repo = repo)[[1]]$author[[1]]
 message("auth")
 
+message(last_commit_author)
+
 
 if (
     Sys.getenv("TRAVIS_BRANCH") == 'master' &&
