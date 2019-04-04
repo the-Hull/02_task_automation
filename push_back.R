@@ -26,29 +26,26 @@ cred <- git2r::cred_token("GH_TOKEN")
 #
 
 
-if (
-    Sys.getenv("TRAVIS_BRANCH") == 'master' &&
-    Sys.getenv("TRAVIS_PULL_REQUEST") == 'false' &&
-    git2r::commits()[[1]]$author[[1]] != "travishull")
-{
-git2r::checkout(repo, branch = "master")
-git2r::add(repo, "*")
-git2r::commit(repo, message = commit_message)
+if (git2r::commits(repo = repo)[[1]]$author[[1]] != "travishull" ){
+    # git2r::commits()[[1]]$author[[1]] != "travishull"
+    git2r::checkout(repo, branch = "master")
+    git2r::add(repo, "*")
+    git2r::commit(repo, message = commit_message)
 
 
 
 
-# - "./.push_results.sh"
+    # - "./.push_results.sh"
 
-git2r::push(repo,
-            name = "taskauto",
-            refspec = "refs/heads/master",
-            credentials = cred)
+    git2r::push(repo,
+                name = "taskauto",
+                refspec = "refs/heads/master",
+                credentials = cred)
 
-# Mt St Helens
-# Grand Teton Mountain
-# El Capitan Yosemite
-# git remote add origin-rhydro https://${GH_TOKEN}@github.com/the-Hull/02_task_automation.git
-# git push origin-rhydro
+    # Mt St Helens
+    # Grand Teton Mountain
+    # El Capitan Yosemite
+    # git remote add origin-rhydro https://${GH_TOKEN}@github.com/the-Hull/02_task_automation.git
+    # git push origin-rhydro
 
 }
