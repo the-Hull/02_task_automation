@@ -21,3 +21,4 @@ if ("HydroData" %in% rownames(installed.packages()) == FALSE) {
     remotes::install_github("mikejohnson51/HydroData", upgrade = "always")
 }
 # - R CMD INSTALL --configure-args="--with-nc-config=/home/joe/bin/nc-config" ncdf4
+# test
