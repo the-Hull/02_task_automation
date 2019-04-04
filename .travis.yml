@@ -24,8 +24,7 @@ matrix:
     before_install:
     - export DISPLAY=:99.0
     - sh -e /etc/init.d/xvfb start
-    - chmod 755 ./.push_results.sh
-    after_success: 
+    after_success:
     r_packages:
     - devtools
     - "./.push_results.sh"
