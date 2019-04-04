@@ -24,11 +24,11 @@ matrix:
     before_install:
     - export DISPLAY=:99.0
     - sh -e /etc/init.d/xvfb start
-    - chmod +x .push_results.sh
+    - chmod +x ./.push_results.sh
     after_success:
+    - ./.push_results.sh
     r_packages:
     - devtools
-    - ./.push_results.sh
 r_build_args: " "
 r_check_args: "--as-cran"
 warnings_are_errors: false
@@ -36,9 +36,6 @@ install:
 - Rscript install_packages.R
 script:
 - Rscript generate_parameter_reports.R
-branches:
-  only:
-  - master
 env:
   global:
     secure: VsGZSzMIorL7OYbTuQ6G+mm1Tb47DeZQMEAQtdKRzN4AOG4hR5a/JpsUNeq8lAud7cOeVLvQos0umMVmQOW/XydbMxNbQII+i2ge7MPPmlHfil1GE4iIxhIcauXcjF6VhGwk0jId81hzLeZ8Wayq26OtczaoJimVnvjzTqNq5/1ya79aZMoueLgwGLx1L52h8LI2Al1zv/4va7aXgOyyyZnA8dsVAbFuP/ouKBL0bR3tMNXpAM/wnTjRFWXOfEvCw3AdwfAoUGkkFU0MksKRyNbCfFv+jdwuUxpts8T5g2tmqguLB6jmh+qvKjzgw/8hwUP1cXwUlzfuW9+I44H7cfUuoeJQ1BZuzFpzWePg6s+74FKEpYhgERLNzZ9AIKx+HTRB5HJ6G9ein3J8DVkO7VRE61i8OSjp7Q9KoIHm52qtPBPFkkYKKEeeQwZSflUcV2U2NYrluM95qgpSz3OYQwgF8aOnKGbt2soBAkI3aXj4MkKys63ukXvKaJv1e3WjkONBNuz5SunnnQGd3it/4FiDpd5xF32Bw6sQGLh4IkMYLbwv0v5MSwQ/WQgA5WZPciUzNv/eVRLmu9IcX0wdnlzD0fGiCz0OwmG4i/VLl0RkF+65/hkr3u3O5DCe7behFqig9SVohQoK5fJCyDw4TwxWNp/VCVYfL0s3Rhmpieg=
