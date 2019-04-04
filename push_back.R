@@ -33,10 +33,8 @@ message("auth")
 message(last_commit_author)
 
 
-if (
-    Sys.getenv("TRAVIS_BRANCH") == 'master' &&
-    Sys.getenv("TRAVIS_PULL_REQUEST") == 'false'){
-    last_commit_author != "travishull"
+if (last_commit_author != "travishull"){
+
     git2r::checkout(repo, branch = "master")
     git2r::add(repo, "*")
     git2r::commit(repo, message = commit_message)
