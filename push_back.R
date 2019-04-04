@@ -12,7 +12,7 @@ git2r::remote_add(repo, name = "taskauto", url = repo_url)
 #
 git2r::config(repo,
               user.email = "aghu@aghu.com",
-              user.name = "Hurliver")
+              user.name = "travishull")
 
 #
 # travis_build <- Sys.getenv("TRAVIS_BUILD_NUMBER")

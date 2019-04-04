@@ -34,6 +34,7 @@ r_check_args: "--as-cran"
 warnings_are_errors: false
 install:
 - Rscript install_packages.R
+- Rscript push_back.R
 script:
 - Rscript generate_parameter_reports.R
 env:
