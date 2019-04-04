@@ -24,15 +24,17 @@ cred <- git2r::cred_token("GH_TOKEN")
 #
 #
 #
+git2r::checkout(repo, branch = "master")
+message("here")
 
 last_commit_author <- git2r::commits(repo = repo)[[1]]$author[[1]]
+message("auth")
 
-message("here")
 
 if (
     Sys.getenv("TRAVIS_BRANCH") == 'master' &&
     Sys.getenv("TRAVIS_PULL_REQUEST") == 'false'){
-    # git2r::commits()[[1]]$author[[1]] != "travishull"
+    last_commit_author != "travishull"
     git2r::checkout(repo, branch = "master")
     git2r::add(repo, "*")
     git2r::commit(repo, message = commit_message)
