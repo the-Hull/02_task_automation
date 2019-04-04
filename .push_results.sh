@@ -1,4 +1,5 @@
-
+rm -rf .git/
+git init
 
 GH_REPO="@github.com/the-Hull/02_task_automation.git"
 
@@ -11,4 +12,4 @@ git add .
 
 
 git commit -m "deployed from travis"
-git push --force --quiet $FULL_REPO master
+git push --force --quiet $FULL_REPO
