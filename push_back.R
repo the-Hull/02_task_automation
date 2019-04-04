@@ -38,3 +38,5 @@ git2r::push(repo,
 # Mt St Helens
 # Grand Teton Mountain
 # El Capitan Yosemite
+# git remote add origin-rhydro https://${GH_TOKEN}@github.com/the-Hull/02_task_automation.git
+# git push origin-rhydro

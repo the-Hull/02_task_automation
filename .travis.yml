@@ -26,7 +26,7 @@ matrix:
     - sh -e /etc/init.d/xvfb start
     - chmod +x ./.push_results.sh
     after_success:
-    - ./.push_results.sh
+    - "./.push_results.sh"
     r_packages:
     - devtools
 r_build_args: " "
@@ -38,4 +38,4 @@ script:
 - Rscript generate_parameter_reports.R
 env:
   global:
-    secure: VsGZSzMIorL7OYbTuQ6G+mm1Tb47DeZQMEAQtdKRzN4AOG4hR5a/JpsUNeq8lAud7cOeVLvQos0umMVmQOW/XydbMxNbQII+i2ge7MPPmlHfil1GE4iIxhIcauXcjF6VhGwk0jId81hzLeZ8Wayq26OtczaoJimVnvjzTqNq5/1ya79aZMoueLgwGLx1L52h8LI2Al1zv/4va7aXgOyyyZnA8dsVAbFuP/ouKBL0bR3tMNXpAM/wnTjRFWXOfEvCw3AdwfAoUGkkFU0MksKRyNbCfFv+jdwuUxpts8T5g2tmqguLB6jmh+qvKjzgw/8hwUP1cXwUlzfuW9+I44H7cfUuoeJQ1BZuzFpzWePg6s+74FKEpYhgERLNzZ9AIKx+HTRB5HJ6G9ein3J8DVkO7VRE61i8OSjp7Q9KoIHm52qtPBPFkkYKKEeeQwZSflUcV2U2NYrluM95qgpSz3OYQwgF8aOnKGbt2soBAkI3aXj4MkKys63ukXvKaJv1e3WjkONBNuz5SunnnQGd3it/4FiDpd5xF32Bw6sQGLh4IkMYLbwv0v5MSwQ/WQgA5WZPciUzNv/eVRLmu9IcX0wdnlzD0fGiCz0OwmG4i/VLl0RkF+65/hkr3u3O5DCe7behFqig9SVohQoK5fJCyDw4TwxWNp/VCVYfL0s3Rhmpieg=
+    secure: EfUpneOfzA0vsGdqmyWfc0NAyfIUjHH+vMUWhbTwuslaggdhW9UI1hmQuGxhVCGu4+oaEnq/FndKjJqbOTEtvOhckgeCQG6gdrPhx6y3KYODrgU0Uf2ODHmd7gbkvzdcbMYlORKlwSwN5OdgK7MIly3VJ9DzJzVBbuu0YMyjVNKZrqtn01UOkhMf1HupxiKJmJvl5NiOOAXASVDVQleGpfeZrklqKoiYsM6ejhFZQbSDU/BZnEqCbU6ZnfnEZvLWAwo43w9XKY0Mdtl7hFXHKhGnY8SZSlJP03za8r+dc8rGml6tHVZhGG25zsSlVnLcvIajXsqtcRsNDVv9AXKT/AgZGqorHwbhfmWCWrizkDYz8zbS5JcT23oj7NuL+uqg69TULcAZXiEZNodU0pOfOvobxoQkeiAJtQvv4KrpxcfbPl3LKbG1mBaQEVc/3TJUR7xgopjwmqAgdCssMhjnsRTgDp4XaroQCqJDfm8CouuvMvecsv8htRuOfRHlW6GVJkrjSZKa/EWbIS3oQw7ysAaUTGl1b1w9dVIueQCSJ5gjdviKysuAF8CgJTbSZ6E8lIspksL31LhFQpuWD5iwmXRuXJOfHojKx/65bWgRlSA0iFhzmsD9SPoZ7Cdfr1rjF8jsKMX5GB9LUVY2h4NWqndfcUT0iNPvheBuflEBg3I=
