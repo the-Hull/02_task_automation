@@ -1,18 +1,20 @@
-#!/bin/bash
+#!/bin/sh
 
+setup_git() {
+  git config --global user.email "travis@travis-ci.org"
+  git config --global user.name "Travis CI"
+}
 
-rm -rf .git/
-git init
+commit_report_files() {
+  git add .
+  git commit --message "Travis build: $TRAVIS_BUILD_NUMBER"
+}
 
-GH_REPO="@github.com/the-Hull/02_task_automation.git"
+upload_files() {
+  git remote add origin-rhydro https://${GH_TOKEN}@github.com/the-Hull/02_task_automation.git > /dev/null 2>&1
+  git push --quiet --set-upstream origin-rhydro gh-pages
+}
 
-FULL_REPO="https://$GH_TOKEN$GH_REPO"
-
-git config user.name "rmflight-travis"
-git config user.email "travis"
-
-git add .
-
-
-git commit -m "deployed from travis"
-git push --force --quiet $FULL_REPO master
+setup_git
+commit_report_files
+upload_files
